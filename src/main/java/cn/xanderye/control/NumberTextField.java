@@ -21,6 +21,8 @@ public class NumberTextField extends TextField {
                 Matcher matcher = NUMBER_PATTERN.matcher(newValue);
                 if (matcher.find()) {
                     this.setText(matcher.group());
+                } else {
+                    this.setText("");
                 }
             }
         });
