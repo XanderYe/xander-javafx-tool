@@ -13,18 +13,12 @@ import java.util.regex.Pattern;
  */
 public class NumberTextField extends TextField {
 
-    private static final Pattern NUMBER_PATTERN = Pattern.compile("-?\\d+\\.?\\d*");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?\\d+\\.?\\d*$");
 
     public NumberTextField() {
         this.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                Matcher matcher = NUMBER_PATTERN.matcher(newValue);
-                if (matcher.find()) {
-                    this.setText(matcher.group());
-                } else {
-                    this.setText("");
-                }
-            }
+            String val = NUMBER_PATTERN.matcher(newValue).matches() ? newValue : oldValue;
+            this.setText(val);
         });
     }
 }

@@ -1,5 +1,6 @@
 package cn.xanderye.ext;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -63,5 +64,27 @@ public class Converter {
                 return null;
             }
         });
+    }
+
+    /**
+     * 字符串设置下拉默认值对象
+     * @param comboBox
+     * @param function
+     * @param value
+     * @return void
+     * @author XanderYe
+     * @date 2021/11/23
+     */
+    public static <T> void setComboValue(ComboBox<T> comboBox, Function<T, Object> function, String value) {
+        if (value == null || "".equals(value)) {
+            return;
+        }
+        ObservableList<T> observableList = comboBox.getItems();
+        for (T t : observableList) {
+            if (value.equals(function.apply(t))) {
+                comboBox.setValue(t);
+                break;
+            }
+        }
     }
 }
