@@ -12,6 +12,7 @@ import java.util.Optional;
  * @date 2021/10/28 10:30
  */
 public class Dialog {
+
     /**
      * 确认弹窗
      * @param header
@@ -61,6 +62,7 @@ public class Dialog {
         alert.setContentText(message);
         alert.show();
     }
+
     /**
      * 警告弹窗
      * @param header
