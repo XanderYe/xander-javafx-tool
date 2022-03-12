@@ -25,6 +25,9 @@ public class JavaFxWindow {
      * @date 2022/3/12
      */
     public static void initTray(URL url, String toolTips, MenuItem[] menuItems, MouseListener mouseListener) {
+        if (!SystemTray.isSupported()) {
+            throw new RuntimeException("System does not supported tray.");
+        }
         // 关闭最后一个窗口不结束程序
         Platform.setImplicitExit(false);
         Image image = Toolkit.getDefaultToolkit().getImage(url);
