@@ -47,7 +47,9 @@ public class PropertyUtil {
                     if (path == null) {
                         path = System.getProperty("user.dir");
                     }
-                    filePath = path.endsWith("/") || path.endsWith("\\") ? path + "config.properties" : path;
+                    if (new File(path).isDirectory()) {
+                        filePath = path + File.separator + "config.properties";
+                    }
                     File file = new File(filePath);
                     if (!file.exists()) {
                         try {
